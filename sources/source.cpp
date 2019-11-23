@@ -33,7 +33,8 @@ void Cache::straight_pass() {
         }
         delete[] _array;
         clock_t end1 = clock();
-        resultWindow("Straight", i, _experiments[i], (double) (end1 - start) / CLOCKS_PER_SEC);
+        resultWindow("Straight", i, _experiments[i],
+                     static_cast<double> (end1 - start) / CLOCKS_PER_SEC);
     }
 }
 
@@ -49,7 +50,8 @@ void Cache::back_pass() {
         }
         delete[] _array;
         clock_t end1 = clock();
-        resultWindow("Back", i, _experiments[i], (double) (end1 - start) / CLOCKS_PER_SEC);
+        resultWindow("Back", i, _experiments[i],
+                     static_cast<double> (end1 - start) / CLOCKS_PER_SEC);
     }
 }
 
@@ -68,7 +70,8 @@ void Cache::random_pass() {
         }
         delete[] _array;
         clock_t end1 = clock();
-        resultWindow("Random", i, _experiments[i], (double) (end1 - start) / CLOCKS_PER_SEC);
+        resultWindow("Random", i, _experiments[i],
+                     static_cast<double> (end1 - start) / CLOCKS_PER_SEC);
     }
 }
 
@@ -85,7 +88,7 @@ void Cache::set_array(int i) {
 void Cache::set_straight(int size) {
     srand(time(NULL));
     for (int i = 0; i < size; ++i) {
-        _array[i] = rand();
+        _array[i] = rand_r();
     }
 }
 
@@ -93,7 +96,7 @@ void Cache::set_straight(int size) {
 void Cache::set_back(int size) {
     srand(time(NULL));
     for (int i = size - 1; i >= 0; --i) {
-        _array[i] = rand();
+        _array[i] = rand_r();
     }
 }
 
@@ -105,8 +108,9 @@ void Cache::set_random(int size, std::vector <size_t> &myrand) {
 }
 
 
-void Cache::resultWindow(std::string const &travelVariant, size_t const &numberOfExperiment, int const &size,
-                         double const &timeOfArray) {
+void Cache::resultWindow(std::string const &travelVariant,
+        size_t const &numberOfExperiment, int const &size,
+        double const &timeOfArray) {
     std::cout << "travel_variant: " << travelVariant << std::endl;
     std::cout << "experiments: " << std::endl;
     std::cout << "   - experiment: " << std::endl;
@@ -118,9 +122,7 @@ void Cache::resultWindow(std::string const &travelVariant, size_t const &numberO
 
 }
 
-
 int main() {
     Cache M;
-
     M.random_pass();
 }

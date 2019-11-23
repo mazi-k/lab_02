@@ -10,6 +10,7 @@
 #include <vector>
 #include <algorithm>
 #include <chrono>
+#include <string>
 
 #define l1 393216
 #define  l3 9437184
@@ -36,7 +37,6 @@ public:
     ~Cache() {}
 
 private:
-
     void set_array(int);
 
     void set_straight(int);
