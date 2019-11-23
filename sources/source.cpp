@@ -103,7 +103,7 @@ void Cache::set_back(int size) {
 void Cache::set_random(int size, std::vector <size_t> &myrand) {
     srand(time(NULL));
     for (int i = 0; i < size; ++i) {
-        _array[myrand[i]] = rand();
+        _array[myrand[i]] = rand_r();
     }
 }
 
@@ -119,10 +119,4 @@ void Cache::resultWindow(std::string const &travelVariant,
     std::cout << "buffer_size: " << size / (translate) << "mb" << std::endl;
     std::cout << "results: " << std::endl;
     std::cout << "duration: " << timeOfArray << std::endl;
-
-}
-
-int main() {
-    Cache M;
-    M.random_pass();
 }
