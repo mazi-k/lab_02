@@ -1,10 +1,11 @@
 // Copyright 2018 Your Name <your_email>
 
 #include <header.hpp>
+
 Cache::Cache() {
     _array = NULL;
     _experiments = number_of_experiments();
-};
+}
 
 
 std::map<int, int> Cache::number_of_experiments() {
@@ -27,7 +28,7 @@ void Cache::straight_pass() {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         clock_t start = clock();
-        for(int j = 1; j != iterations; j++) {
+        for (int j = 1; j != iterations; j++) {
             set_straight(size);
         }
         delete[] _array;
@@ -43,7 +44,7 @@ void Cache::back_pass() {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         clock_t start = clock();
-        for(int j = 1; j != iterations; j++) {
+        for (int j = 1; j != iterations; j++) {
             set_back(size);
         }
         delete[] _array;
@@ -58,12 +59,12 @@ void Cache::random_pass() {
     for (int i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
-        std::vector<size_t> myrand(size);
+        std::vector <size_t> myrand(size);
         srand(time(NULL));
         random_shuffle(myrand.begin(), myrand.end());
         clock_t start = clock();
-        for(int j = 1; j != iterations; j++) {
-            set_random(size,myrand);
+        for (int j = 1; j != iterations; j++) {
+            set_random(size, myrand);
         }
         delete[] _array;
         clock_t end1 = clock();
@@ -96,9 +97,9 @@ void Cache::set_back(int size) {
     }
 }
 
-void Cache::set_random(int size, std::vector <size_t>& myrand) {
+void Cache::set_random(int size, std::vector <size_t> &myrand) {
     srand(time(NULL));
-    for(int i = 0; i < size;++i){
+    for (int i = 0; i < size; ++i) {
         _array[myrand[i]] = rand();
     }
 }
@@ -111,7 +112,7 @@ void Cache::resultWindow(std::string const &travelVariant, size_t const &numberO
     std::cout << "   - experiment: " << std::endl;
     std::cout << "number: " << numberOfExperiment << std::endl;
     std::cout << "input_data: " << std::endl;
-    std::cout << "buffer_size: " << size / (translate) << "mb"<<std::endl;
+    std::cout << "buffer_size: " << size / (translate) << "mb" << std::endl;
     std::cout << "results: " << std::endl;
     std::cout << "duration: " << timeOfArray << std::endl;
 

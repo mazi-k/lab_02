@@ -2,6 +2,7 @@
 
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
+
 #include <iostream>
 #include <ctime>
 #include <map>
@@ -42,7 +43,7 @@ private:
 
     void set_back(int);
 
-    void set_random(int,std::vector <size_t>&);
+    void set_random(int, std::vector <size_t> &);
 
 
 public:
