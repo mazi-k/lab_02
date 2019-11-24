@@ -120,11 +120,3 @@ void Cache::resultWindow(std::string const &travelVariant,
     std::cout << "results: " << std::endl;
     std::cout << "duration: " << timeOfArray << std::endl;
 }
-
-int main(){
-    Cache M;
-    M.straight_pass();
-    M.back_pass();
-    M.random_pass();
-    return 0;
-}
