@@ -88,7 +88,7 @@ void Cache::set_array(int i) {
 void Cache::set_straight(int size) {
     srand(time(NULL));
     for (int i = 0; i < size; ++i) {
-        _array[i] = rand_r(time(NULL));
+        _array[i] = rand();
     }
 }
 
@@ -96,14 +96,14 @@ void Cache::set_straight(int size) {
 void Cache::set_back(int size) {
     srand(time(NULL));
     for (int i = size - 1; i >= 0; --i) {
-        _array[i] = rand_r(time(NULL));
+        _array[i] = rand();
     }
 }
 
 void Cache::set_random(int size, std::vector <size_t> &myrand) {
     srand(time(NULL));
     for (int i = 0; i < size; ++i) {
-        _array[myrand[i]] = rand_r(time(NULL));
+        _array[myrand[i]] = rand();
     }
 }
 
