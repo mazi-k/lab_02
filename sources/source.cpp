@@ -1,6 +1,6 @@
 // Copyright 2018 Your Name <your_email>
 
-#include <header.hpp>
+#include "header.hpp"
 
 Cache::Cache() {
     _array = NULL;
@@ -88,7 +88,7 @@ void Cache::set_array(int i) {
 void Cache::set_straight(int size) {
     srand(time(NULL));
     for (int i = 0; i < size; ++i) {
-        _array[i] = rand_r();
+        _array[i] = rand_r(10);
     }
 }
 
@@ -96,21 +96,21 @@ void Cache::set_straight(int size) {
 void Cache::set_back(int size) {
     srand(time(NULL));
     for (int i = size - 1; i >= 0; --i) {
-        _array[i] = rand_r();
+        _array[i] = rand_r(10);
     }
 }
 
 void Cache::set_random(int size, std::vector <size_t> &myrand) {
     srand(time(NULL));
     for (int i = 0; i < size; ++i) {
-        _array[myrand[i]] = rand_r();
+        _array[myrand[i]] = rand_r(10);
     }
 }
 
 
 void Cache::resultWindow(std::string const &travelVariant,
-        size_t const &numberOfExperiment, int const &size,
-        double const &timeOfArray) {
+                         size_t const &numberOfExperiment, int const &size,
+                         double const &timeOfArray) {
     std::cout << "travel_variant: " << travelVariant << std::endl;
     std::cout << "experiments: " << std::endl;
     std::cout << "   - experiment: " << std::endl;
@@ -119,4 +119,12 @@ void Cache::resultWindow(std::string const &travelVariant,
     std::cout << "buffer_size: " << size / (translate) << "mb" << std::endl;
     std::cout << "results: " << std::endl;
     std::cout << "duration: " << timeOfArray << std::endl;
+}
+
+int main(){
+    Cache M;
+    M.straight_pass();
+    M.back_pass();
+    M.random_pass();
+    return 0;
 }
