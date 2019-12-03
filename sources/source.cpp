@@ -1,6 +1,7 @@
 // Copyright 2018 Your Name <your_email>
 
-#include "header.hpp"
+#include "main.h"
+#include <ctime>
 
 Cache::Cache() {
     _array = NULL;
@@ -86,24 +87,24 @@ void Cache::set_array(int i) {
 
 
 void Cache::set_straight(int size) {
-    srand(time(NULL));
+    time_t now = time(0);
     for (int i = 0; i < size; ++i) {
-        _array[i] = rand();
+        _array[i] = rand_r(now);
     }
 }
 
 
 void Cache::set_back(int size) {
-    srand(time(NULL));
+    time_t now = time(0);
     for (int i = size - 1; i >= 0; --i) {
-        _array[i] = rand();
+        _array[i] = rand_r(now);
     }
 }
 
 void Cache::set_random(int size, std::vector <size_t> &myrand) {
-    srand(time(NULL));
+    time_t now = time(0);
     for (int i = 0; i < size; ++i) {
-        _array[myrand[i]] = rand();
+        _array[myrand[i]] = rand_r(now);
     }
 }
 
