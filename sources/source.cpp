@@ -24,7 +24,7 @@ std::map<int, int> Cache::number_of_experiments() {
 
 
 void Cache::straight_pass() {
-    int number_of_experimets = _experiments.size();
+    unsigned number_of_experimets = _experiments.size();
     for (unsigned i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
         unsigned size = _experiments[i] / sizeof(unsigned);
@@ -41,7 +41,7 @@ void Cache::straight_pass() {
 
 
 void Cache::back_pass() {
-    int number_of_experimets = _experiments.size();
+    unsigned number_of_experimets = _experiments.size();
     for (unsigned i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
         unsigned size = _experiments[i] / sizeof(unsigned);
@@ -58,10 +58,10 @@ void Cache::back_pass() {
 
 
 void Cache::random_pass() {
-    int number_of_experimets = _experiments.size();
-    for (int i = 1; i <= number_of_experimets; ++i) {
+    unsigned number_of_experimets = _experiments.size();
+    for (unsigned i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
-        int size = _experiments[i] / sizeof(int);
+        unsigned size = _experiments[i] / sizeof(unsigned);
         std::vector <size_t> myrand(size);
         srand(time(NULL));
         random_shuffle(myrand.begin(), myrand.end());
@@ -77,9 +77,9 @@ void Cache::random_pass() {
 }
 
 
-void Cache::set_array(int i) {
+void Cache::set_array(unsigned i) {
     unsigned size = _experiments[i] / sizeof(unsigned);
-    _array = new int[size];
+    _array = new unsigned[size];
     for (unsigned k = 0; k < size; ++k) {
         _array[k] = 0;
     }
