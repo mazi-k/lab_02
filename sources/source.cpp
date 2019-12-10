@@ -25,11 +25,11 @@ std::map<int, int> Cache::number_of_experiments() {
 
 void Cache::straight_pass() {
     int number_of_experimets = _experiments.size();
-    for (int i = 1; i <= number_of_experimets; ++i) {
+    for (unsigned i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
-        int size = _experiments[i] / sizeof(int);
+        unsigned size = _experiments[i] / sizeof(unsigned);
         clock_t start = clock();
-        for (int j = 1; j != iterations; j++) {
+        for (unsigned j = 1; j != iterations; ++j) {
             set_straight(size);
         }
         delete[] _array;
@@ -42,11 +42,11 @@ void Cache::straight_pass() {
 
 void Cache::back_pass() {
     int number_of_experimets = _experiments.size();
-    for (int i = 1; i <= number_of_experimets; ++i) {
+    for (unsigned i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
-        int size = _experiments[i] / sizeof(int);
+        unsigned size = _experiments[i] / sizeof(unsigned);
         clock_t start = clock();
-        for (int j = 1; j != iterations; j++) {
+        for (unsigned j = 1; j != iterations; ++j) {
             set_back(size);
         }
         delete[] _array;
@@ -66,7 +66,7 @@ void Cache::random_pass() {
         srand(time(NULL));
         random_shuffle(myrand.begin(), myrand.end());
         clock_t start = clock();
-        for (int j = 1; j != iterations; j++) {
+        for (unsigned j = 1; j != iterations; ++j) {
             set_random(size, myrand);
         }
         delete[] _array;
@@ -78,9 +78,9 @@ void Cache::random_pass() {
 
 
 void Cache::set_array(int i) {
-    int size = _experiments[i] / sizeof(int);
+    unsigned size = _experiments[i] / sizeof(unsigned);
     _array = new int[size];
-    for (int k = 0; k < size; ++k) {
+    for (unsigned k = 0; k < size; ++k) {
         _array[k] = 0;
     }
 }
@@ -88,7 +88,7 @@ void Cache::set_array(int i) {
 
 void Cache::set_straight(int size) {
     unsigned now = time(0);
-    for (int i = 0; i < size; ++i) {
+    for (unsigned i = 0; i < size; ++i) {
         _array[i] = rand_r(&now);
     }
 }
@@ -96,14 +96,14 @@ void Cache::set_straight(int size) {
 
 void Cache::set_back(int size) {
     unsigned now = time(0);
-    for (int i = size - 1; i >= 0; --i) {
+    for (unsigned i = size - 1; i >= 0; --i) {
         _array[i] = rand_r(&now);
     }
 }
 
 void Cache::set_random(int size, std::vector <size_t> &myrand) {
     unsigned now = time(0);
-    for (int i = 0; i < size; ++i) {
+    for (unsigned i = 0; i < size; ++i) {
         _array[myrand[i]] = rand_r(&now);
     }
 }
