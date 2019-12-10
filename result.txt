@@ -1,0 +1,123 @@
+travel_variant: Straight
+experiments:
+   - experiment:
+number: 1
+input_data:
+buffer_size: 0mb
+results:
+duration: 0.47
+travel_variant: Straight
+experiments:
+   - experiment:
+number: 2
+input_data:
+buffer_size: 2mb
+results:
+duration: 4.943
+travel_variant: Straight
+experiments:
+   - experiment:
+number: 3
+input_data:
+buffer_size: 4mb
+results:
+duration: 10.441
+travel_variant: Straight
+experiments:
+   - experiment:
+number: 4
+input_data:
+buffer_size: 8mb
+results:
+duration: 19.822
+travel_variant: Straight
+experiments:
+   - experiment:
+number: 5
+input_data:
+buffer_size: 9mb
+results:
+duration: 22.071
+
+
+travel_variant: Back
+experiments:
+   - experiment:
+number: 1
+input_data:
+buffer_size: 0mb
+results:
+duration: 0.457
+travel_variant: Back
+experiments:
+   - experiment:
+number: 2
+input_data:
+buffer_size: 2mb
+results:
+duration: 4.857
+travel_variant: Back
+experiments:
+   - experiment:
+number: 3
+input_data:
+buffer_size: 4mb
+results:
+duration: 9.733
+travel_variant: Back
+experiments:
+   - experiment:
+number: 4
+input_data:
+buffer_size: 8mb
+results:
+duration: 19.849
+travel_variant: Back
+experiments:
+   - experiment:
+number: 5
+input_data:
+buffer_size: 9mb
+results:
+duration: 21.983
+
+travel_variant: Random
+experiments:
+   - experiment:
+number: 1
+input_data:
+buffer_size: 0mb
+results:
+duration: 0.603
+travel_variant: Random
+experiments:
+   - experiment:
+number: 2
+input_data:
+buffer_size: 2mb
+results:
+duration: 6.282
+travel_variant: Random
+experiments:
+   - experiment:
+number: 3
+input_data:
+buffer_size: 4mb
+results:
+duration: 13.338
+travel_variant: Random
+experiments:
+   - experiment:
+number: 4
+input_data:
+buffer_size: 8mb
+results:
+duration: 25.034
+travel_variant: Random
+experiments:
+   - experiment:
+number: 5
+input_data:
+buffer_size: 9mb
+results:
+duration: 28.24
