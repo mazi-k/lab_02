@@ -29,7 +29,7 @@ void Cache::straight_pass() {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         clock_t start = clock();
-        for (int j = 1; j != iterations; ++j) {
+        for (size_t j = 1; j != iterations; ++j) {
             set_straight(size);
         }
         delete[] _array;
@@ -46,7 +46,7 @@ void Cache::back_pass() {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         clock_t start = clock();
-        for (int j = 1; j != iterations; ++j) {
+        for (size_t j = 1; j != iterations; ++j) {
             set_back(size);
         }
         delete[] _array;
