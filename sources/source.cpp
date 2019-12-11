@@ -66,7 +66,7 @@ void Cache::random_pass() {
         srand(time(NULL));
         random_shuffle(myrand.begin(), myrand.end());
         clock_t start = clock();
-        for (unsigned long j = 1; j != iterations; ++j) {
+        for (size_t j = 1; j != iterations; ++j) {
             set_random(size, myrand);
         }
         delete[] _array;
