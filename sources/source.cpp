@@ -96,7 +96,7 @@ void Cache::set_straight(int size) {
 
 void Cache::set_back(int size) {
     unsigned now = time(0);
-    for (size_t i = static_cast<size_t>(size) - 1; i >= 0; --i) {
+    for (int i = size - 1; i >= 0; --i) {
         _array[i] = rand_r(&now);
     }
 }
