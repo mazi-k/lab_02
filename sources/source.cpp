@@ -42,7 +42,7 @@ void Cache::straight_pass() {
 
 void Cache::back_pass() {
     int number_of_experimets = _experiments.size();
-    for (size_t i = 1; i <= number_of_experimets; ++i) {
+    for (int i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         clock_t start = clock();
@@ -59,7 +59,7 @@ void Cache::back_pass() {
 
 void Cache::random_pass() {
     int number_of_experimets = _experiments.size();
-    for (size_t i = 1; i <= number_of_experimets; ++i) {
+    for (int i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
         int size = _experiments[i] / sizeof(int);
         std::vector <size_t> myrand(size);
@@ -95,16 +95,16 @@ void Cache::set_straight(int size) {
 
 
 void Cache::set_back(int size) {
-    unsigned now = time(0);
+    time_t now = time(0);
     for (size_t i = size - 1; i >= 0; --i) {
-        _array[i] = rand_r(&now);
+        _array[i] = rand_r(static_cast<unsigned>(now));
     }
 }
 
 void Cache::set_random(int size, std::vector <size_t> &myrand) {
-    unsigned now = time(0);
+    time_t now = time(0);
     for (size_t i = 0; i < size; ++i) {
-        _array[myrand[i]] = rand_r(&now);
+        _array[myrand[i]] = rand_r(now);
     }
 }
 
