@@ -24,12 +24,12 @@ std::map<int, int> Cache::number_of_experiments() {
 
 
 void Cache::straight_pass() {
-    unsigned number_of_experimets = _experiments.size();
-    for (unsigned i = 1; i <= number_of_experimets; ++i) {
+    int number_of_experimets = _experiments.size();
+    for (size_t i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
-        unsigned size = _experiments[i] / sizeof(unsigned);
+        int size = _experiments[i] / sizeof(int);
         clock_t start = clock();
-        for (unsigned j = 1; j != iterations; ++j) {
+        for (size_t j = 1; j != iterations; ++j) {
             set_straight(size);
         }
         delete[] _array;
@@ -41,12 +41,12 @@ void Cache::straight_pass() {
 
 
 void Cache::back_pass() {
-    unsigned number_of_experimets = _experiments.size();
-    for (unsigned i = 1; i <= number_of_experimets; ++i) {
+    int number_of_experimets = _experiments.size();
+    for (size_t i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
-        unsigned size = _experiments[i] / sizeof(unsigned);
+        int size = _experiments[i] / sizeof(int);
         clock_t start = clock();
-        for (unsigned j = 1; j != iterations; ++j) {
+        for (size_t j = 1; j != iterations; ++j) {
             set_back(size);
         }
         delete[] _array;
@@ -58,15 +58,15 @@ void Cache::back_pass() {
 
 
 void Cache::random_pass() {
-    unsigned number_of_experimets = _experiments.size();
-    for (unsigned i = 1; i <= number_of_experimets; ++i) {
+    int number_of_experimets = _experiments.size();
+    for (size_t i = 1; i <= number_of_experimets; ++i) {
         set_array(i);
-        unsigned size = _experiments[i] / sizeof(unsigned);
+        int size = _experiments[i] / sizeof(int);
         std::vector <size_t> myrand(size);
         srand(time(NULL));
         random_shuffle(myrand.begin(), myrand.end());
         clock_t start = clock();
-        for (unsigned j = 1; j != iterations; ++j) {
+        for (size_t j = 1; j != iterations; ++j) {
             set_random(size, myrand);
         }
         delete[] _array;
@@ -77,10 +77,10 @@ void Cache::random_pass() {
 }
 
 
-void Cache::set_array(unsigned i) {
-    unsigned size = _experiments[i] / sizeof(unsigned);
-    _array = new unsigned[size];
-    for (unsigned k = 0; k < size; ++k) {
+void Cache::set_array(int i) {
+    int size = _experiments[i] / sizeof(int);
+    _array = new int[size];
+    for (size_t k = 0; k < size; ++k) {
         _array[k] = 0;
     }
 }
@@ -88,7 +88,7 @@ void Cache::set_array(unsigned i) {
 
 void Cache::set_straight(int size) {
     unsigned now = time(0);
-    for (unsigned i = 0; i < size; ++i) {
+    for (size_t i = 0; i < size; ++i) {
         _array[i] = rand_r(&now);
     }
 }
@@ -96,14 +96,14 @@ void Cache::set_straight(int size) {
 
 void Cache::set_back(int size) {
     unsigned now = time(0);
-    for (unsigned i = size - 1; i >= 0; --i) {
+    for (size_t i = size - 1; i >= 0; --i) {
         _array[i] = rand_r(&now);
     }
 }
 
 void Cache::set_random(int size, std::vector <size_t> &myrand) {
     unsigned now = time(0);
-    for (unsigned i = 0; i < size; ++i) {
+    for (size_t i = 0; i < size; ++i) {
         _array[myrand[i]] = rand_r(&now);
     }
 }
